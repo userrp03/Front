@@ -1,0 +1,44 @@
+<div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade"
+         *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <div class="button-row">
+      <button mat-flat-button color="accent" [routerLink]="['/registro']"><mat-icon>list</mat-icon> Voltar</button>
+    </div>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title><h2>{{registro._id}}</h2></mat-card-title>
+        <mat-card-subtitle>{{registro.descricao}}</mat-card-subtitle>
+
+          <mat-form-field>
+            <input matInput name="despesa_registro" placeholder="Despesa" formControlName="despesa_registro">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput name="img_registro" placeholder="Imagem do Registro" formControlName="img_registro">
+          </mat-form-field>
+          <mat-form-field>
+            <textarea  matInput name="tipo_registro" placeholder="Tipo do Registro" formControlName="tipo_registro"></textarea>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput name="data_criacao" placeholder="Data de Criação" formControlName="data_criacao">
+          </mat-form-field>
+      </mat-card-header>
+      <mat-card-content>
+        <dl>
+          <dt>Despesa:</dt>
+          <dd>{{registro.despesa}}</dd>
+          <dt>Imagem</dt>
+          <dd>{{registro.imagem}}</dd>
+          <dt>Tipo:</dt>
+          <dd>{{registro.tipo}}</dd>
+          <dt>Criado em:</dt>
+          <dd>{{registro.dtCriacao | date}}</dd>
+        </dl>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button color="primary" class="teste" [routerLink]="['/registro-editar', registro._id]"><mat-icon>edit</mat-icon> Editar</button>
+        <button mat-flat-button color="warn" (click)="deleteRegistro(registro._id)"><mat-icon>delete</mat-icon> Excluir</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>

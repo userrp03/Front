@@ -1,0 +1,30 @@
+<div>
+    <h3>Adicionar Novo Registro</h3>
+  </div>
+  <form class="example-container" [formGroup]="registroForm" (ngSubmit)="addRegistro(registroForm.value)">
+    <!--<mat-form-field>
+       <input matInput name="id_registro" placeholder="ID do Registro" formControlName="id_registro"> 
+      <input matInput name="id_registro" placeholder="ID" formControlName="id_registro">
+    </mat-form-field>-->
+    <mat-form-field>
+      <!-- <textarea  matInput name="desc_registro" placeholder="Descrição do Registro" formControlName="desc_registro"></textarea> -->
+      <textarea  matInput name="desc_registro" placeholder="Descrição" formControlName="desc_registro"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="despesa_registro" placeholder="Despesa" formControlName="despesa_registro">
+    </mat-form-field>
+    <mat-form-field>
+      <!-- <input matInput name="img_registro" placeholder="Imagem do Registro" formControlName="img_registro"> -->
+      <input matInput name="img_registro" placeholder="Imagem" formControlName="img_registro">
+    </mat-form-field>
+    <mat-form-field>
+      <!-- <textarea  matInput name="tipo_registro" placeholder="Tipo do Registro" formControlName="tipo_registro"></textarea> -->
+      <textarea  matInput name="tipo_registro" placeholder="Tipo" formControlName="tipo_registro"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <!-- <input matInput name="data_criacao" placeholder="Data de Criação" formControlName="data_criacao"> -->
+      <input matInput name="data_criacao" placeholder="Data" formControlName="data_criacao">
+    </mat-form-field>
+
+    <button type="submit" [disabled]="!registroForm.valid" mat-button color="primary" >Adicionar</button>
+  </form>
