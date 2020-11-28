@@ -50,7 +50,7 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule,
     MatToolbarModule
   ],
-  providers: [],
+  providers: [RegistroDetalheComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

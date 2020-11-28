@@ -10,7 +10,7 @@ import { ApiService } from './../api.service';
   styleUrls: ['./registro-editar.component.css']
 })
 export class RegistroEditarComponent implements OnInit {
-  _id: number = null;
+  id: number = null;
   registroForm: FormGroup;
   desc_registro: string = '';
   despesa_registro: string = '';
@@ -35,13 +35,13 @@ export class RegistroEditarComponent implements OnInit {
 
   getRegistro(id) {
     this.api.getRegistro(id).subscribe(data => {
-      this._id = data._id;
+      this.id = data.id;
       this.registroForm.setValue({
-        // id_registro: data._id,
+        // id_registro: data.id,
         desc_registro: data.descricao,
         despesa_registro: data.despesa,
         img_registro: data.imagem,
-        data_registro: data.dtCriacao,
+        data_registro: data.dataCriacao,
         tipo_registro: data.tipo
       });
     });
@@ -49,10 +49,10 @@ export class RegistroEditarComponent implements OnInit {
   
   updateRegistro(form: NgForm) {
     this.isLoadingResults = true;
-    this.api.updateRegistro(this._id, form)
+    this.api.updateRegistro(this.id, form)
       .subscribe(res => {
           this.isLoadingResults = false;
-          this.router.navigate(['/registro-detalhe/' + this._id]);
+          this.router.navigate(['/registro-detalhe/' + this.id]);
         }, (err) => {
           console.log(err);
           this.isLoadingResults = false;

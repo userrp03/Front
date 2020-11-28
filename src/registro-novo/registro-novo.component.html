@@ -1,0 +1,67 @@
+<!-- <div> -->
+    <!-- <h3>Adicionar Novo Registro</h3> -->
+  <!-- </div> -->
+  <!-- <form class="example-container" [formGroup]="registroForm" (ngSubmit)="addRegistro(registroForm.value)"> -->
+    <!--<mat-form-field>
+       <input matInput name="id_registro" placeholder="ID do Registro" formControlName="id_registro"> 
+      <input matInput name="id_registro" placeholder="ID" formControlName="id_registro">
+    </mat-form-field>-->
+    <!-- <mat-form-field> -->
+      <!-- <textarea  matInput name="desc_registro" placeholder="Descrição do Registro" formControlName="desc_registro"></textarea> -->
+      <!-- <textarea  matInput name="Descricao" placeholder="Descrição" formControlName="Descricao"></textarea> -->
+    <!-- </mat-form-field> -->
+    <!-- <mat-form-field> -->
+      <!-- <input matInput name="Despesa" placeholder="Despesa" formControlName="Despesa"> -->
+    <!-- </mat-form-field> -->
+    <!-- <mat-form-field> -->
+      <!-- <input matInput name="img_registro" placeholder="Imagem do Registro" formControlName="img_registro"> -->
+      <!-- <input matInput name="Imagem" placeholder="Imagem" formControlName="Imagem"> -->
+    <!-- </mat-form-field> -->
+    <!-- <mat-form-field> -->
+      <!-- <textarea  matInput name="tipo_registro" placeholder="Tipo do Registro" formControlName="tipo_registro"></textarea> -->
+      <!-- <textarea  matInput name="Tipo" placeholder="Tipo" formControlName="Tipo"></textarea> -->
+    <!-- </mat-form-field> -->
+    <!-- <mat-form-field> -->
+      <!-- <input matInput name="data_criacao" placeholder="Data de Criação" formControlName="data_criacao"> -->
+      <!-- <input matInput name="DataCriacao" placeholder="Data" formControlName="DataCriacao"> -->
+    <!-- </mat-form-field> -->
+
+    <!-- <button type="submit" [disabled]="!registroForm.valid" mat-button color="primary" >Adicionar</button> -->
+    <!-- <button type="submit" onClick="save()"  mat-button color="primary" >Adicionar</button> -->
+    <!-- <button type="submit" class="btn btn-success">Submit</button> -->
+  <!-- </form> -->
+  <div [hidden]="submitted" style="width: 400px;">
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">ID do Registro</label>
+            <input type="text" class="form-control" id="ID" required [(ngModel)]="registro.id" name="ID">
+        </div>
+
+        <div class="form-group">
+            <label for="name">Descrição do Registro</label>
+            <input type="text" class="form-control" id="Descricao" required [(ngModel)]="registro.descricao" name="Descricao">
+        </div>
+
+        <div class="form-group">
+            <label for="name">Despesa</label>
+            <input type="text" class="form-control" id="Despesa" required [(ngModel)]="registro.despesa" name="Despesa">
+        </div>
+
+        <div class="form-group">
+            <label for="name">Imagem do Registro</label>
+            <input type="text" class="form-control" id="Imagem" required [(ngModel)]="registro.imagem" name="Imagem">
+        </div>
+        
+        <div class="form-group">
+            <label for="name">Tipo do Registro</label>
+            <input type="text" class="form-control" id="Tipo" required [(ngModel)]="registro.tipo" name="Tipo">
+        </div>
+
+        <div class="form-group">
+            <label for="name">Data de Criação</label>
+            <input type="text" class="form-control" id="DataCriacao" required [(ngModel)]="registro.dataCriacao" name="DataCriacao">
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>

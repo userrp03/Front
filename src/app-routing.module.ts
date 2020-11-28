@@ -18,11 +18,11 @@ const routes: Routes = [
     data: { title: 'Detalhe do Registro' }
   },
   //Adicionado a mais
-  {
-    path: 'registro-detalhe/',
-    component: RegistroDetalheComponent,
-    data: { title: 'Detalhe do Registro' }
-  },
+  // {
+  //   path: 'registro-detalhe/',
+  //   component: RegistroDetalheComponent,
+  //   data: { title: 'Detalhe do Registro' }
+  // },
   //
   {
     path: 'registro-novo',

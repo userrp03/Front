@@ -1,4 +1,4 @@
-<div class="example-container mat-elevation-z8">
+<!--<div class="example-container mat-elevation-z8">
     <div class="example-loading-shade"
          *ngIf="isLoadingResults">
       <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
@@ -8,7 +8,7 @@
     </div>
     <mat-card class="example-card">
       <mat-card-header>
-        <mat-card-title><h2>{{registro._id}}</h2></mat-card-title>
+        <mat-card-title><h2>{{registro.id}}</h2></mat-card-title>
         <mat-card-subtitle>{{registro.descricao}}</mat-card-subtitle>
 
           <mat-form-field>
@@ -33,12 +33,39 @@
           <dt>Tipo:</dt>
           <dd>{{registro.tipo}}</dd>
           <dt>Criado em:</dt>
-          <dd>{{registro.dtCriacao | date}}</dd>
+          <dd>{{registro.dataCriacao | date}}</dd>
         </dl>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-flat-button color="primary" class="teste" [routerLink]="['/registro-editar', registro._id]"><mat-icon>edit</mat-icon> Editar</button>
-        <button mat-flat-button color="warn" (click)="deleteRegistro(registro._id)"><mat-icon>delete</mat-icon> Excluir</button>
+        <button mat-flat-button color="primary" class="teste" [routerLink]="['/registro-editar', registro.id]"><mat-icon>edit</mat-icon> Editar</button>
+        <button mat-flat-button color="warn" (click)="deleteRegistro(registro.id)"><mat-icon>delete</mat-icon> Excluir</button>
       </mat-card-actions>
     </mat-card>
-  </div>
+  </div>-->
+  <div *ngIf="registro">
+    <div>
+        <label>ID: </label> {{registro.id}}
+    </div>
+    <div>
+        <label>Descrição: </label> {{registro.descricao}}
+    </div>
+    <div>
+        <label>Despesa: </label> {{registro.emailId}}
+    </div>
+    <div>
+        <label>Imagem do Registro: </label> {{registro.imagem}}
+    </div>
+    <div>
+        <label>Tipo do Registro: </label> {{registro.tipo}}
+    </div>
+    <div>
+        <label>Data de Criação: </label> {{registro.dataCriacao}}
+    </div>
+
+    <span class="button is-small btn-primary" *ngIf='registro.active' (click)='updateActive(false)'>Inactive</span>
+
+    <span class="button is-small btn-primary" *ngIf='!registro.active' (click)='updateActive(true)'>Active</span>
+
+    <span class="button is-small btn-danger" (click)='deleteRegistro()'>Delete</span>
+
+    <hr/>

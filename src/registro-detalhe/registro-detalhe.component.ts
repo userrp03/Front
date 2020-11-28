@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { RegistrosComponent } from './../registros/registros.component';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from './../api.service';
 import { Registro } from 'src/model/registro';
@@ -9,10 +10,11 @@ import { Registro } from 'src/model/registro';
   styleUrls: ['./registro-detalhe.component.css']
 })
 export class RegistroDetalheComponent implements OnInit {
-  registro: Registro = { _id: null, descricao: '', despesa: '', imagem: '', tipo: null, dtCriacao: null };
+  // registro: Registro = { id: null, descricao: '', despesa: null, imagem: '', tipo: null, dataCriacao: null };
+  @Input() registro: Registro;
   isLoadingResults = true;
 
-  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private registrosComponent: RegistrosComponent) { }
 
   ngOnInit(): void {
     this.getRegistro(this.route.snapshot.params['id']);
