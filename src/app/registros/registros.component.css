@@ -1,0 +1,14 @@
+th { 
+    padding: 10px;
+}
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    padding: 10px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.mat-table{
+    padding: 15px;
+    margin-bottom: 15px;
+}

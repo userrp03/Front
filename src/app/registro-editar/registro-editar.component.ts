@@ -1,3 +1,4 @@
+import { Registro } from 'src/model/registro';
 import { Component, OnInit } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
@@ -10,8 +11,11 @@ import { ApiService } from './../api.service';
   styleUrls: ['./registro-editar.component.css']
 })
 export class RegistroEditarComponent implements OnInit {
-  id: number = null;
   registroForm: FormGroup;
+  registro: Registro = new Registro();
+
+  id: number = null;
+  // registroForm: FormGroup;
   desc_registro: string = '';
   despesa_registro: string = '';
   img_registro: string = '';
@@ -19,18 +23,31 @@ export class RegistroEditarComponent implements OnInit {
   tipo_registro: string = '';
   isLoadingResults = false;
 
+  apiService: any;
+  submitted = false;
+
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.registro = new Registro();
+
+    this.id = this.route.snapshot.params['id'];
+    
+    this.api.getRegistro(this.id)
+      .subscribe(data => {
+        console.log(data)
+        this.registro = data;
+      }, error => console.log(error));
+
     this.getRegistro(this.route.snapshot.params['id']);
     this.registroForm = this.formBuilder.group({
-      'desc_registro' : [null, Validators.required],
-      'despesa_registro' : [null, Validators.required],
-      'img_registro' : [null, Validators.required],
-      'data_registro' : [null, Validators.required],
-      'tipo_registro' : [null, Validators.required],
-      // 'preco_registro' : [null, Validators.required],
-    })
+      'Id': [null, Validators.required],
+      'Descricao': [null, Validators.required, Validators.minLength(4)],
+      'Despesa': [null, Validators.required],
+      'Imagem': [null, Validators.required],
+      'Tipo': [null, Validators.required],
+      'DataCriacao': [null, Validators.required],
+  });
   }
 
   getRegistro(id) {
@@ -58,5 +75,19 @@ export class RegistroEditarComponent implements OnInit {
           this.isLoadingResults = false;
         }
       );
+  }
+  save() {
+    console.log("teste");
+   
+    this.api.createRegistro(this.registro)
+      .subscribe(data => console.log(data), error => console.log(error));
+    this.registro = new Registro();
+    console.log();
+  }
+
+  onSubmit() {
+    console.log("onSubmit");
+    this.submitted = true;
+    this.save();
   }
 }

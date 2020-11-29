@@ -34,7 +34,7 @@ export class RegistroNovoComponent implements OnInit {
   save() {
     console.log("teste");
    
-    this.api.createEmployee(this.registro)
+    this.api.createRegistro(this.registro)
       .subscribe(data => console.log(data), error => console.log(error));
     this.registro = new Registro();
     console.log();

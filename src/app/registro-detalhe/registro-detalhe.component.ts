@@ -13,11 +13,19 @@ export class RegistroDetalheComponent implements OnInit {
   // registro: Registro = { id: null, descricao: '', despesa: null, imagem: '', tipo: null, dataCriacao: null };
   @Input() registro: Registro;
   isLoadingResults = true;
+  id: number;
 
-  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private registrosComponent: RegistrosComponent) { }
+  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.registro = new Registro();
     this.getRegistro(this.route.snapshot.params['id']);
+
+    this.apiService.getRegistro(this.id)
+    .subscribe(data => {
+      console.log(data)
+      this.registro = data;
+    }, error => console.log(error));
   }
 
   getRegistro(id) {
@@ -41,4 +49,5 @@ export class RegistroDetalheComponent implements OnInit {
         }
       );
   }
+
 }

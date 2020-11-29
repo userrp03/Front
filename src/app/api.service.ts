@@ -14,7 +14,7 @@ const httpOptions = {
             // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin' : '*',
-            'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS,POST,PUT',
+            'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS,POST,PUT,DELETE',
             'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization'
 })
 };
@@ -67,7 +67,7 @@ export class ApiService {
   //   );
   // }
 
-  createEmployee(registro: Object): Observable<Object> {
+  createRegistro(registro: Object): Observable<Object> {
     return this.http.post(`${this.baseUrl}`, registro);
   }
 
@@ -79,14 +79,22 @@ export class ApiService {
     );
   }
 
-  deleteRegistro (id): Observable<Registro> {
-    const url = `${this.baseUrl}/delete/${id}`;
-
-    return this.http.delete<Registro>(url, httpOptions).pipe(
+  deleteRegistro(id: number): Observable<any> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete(url, httpOptions).pipe(
       tap(_ => console.log(`remove o registro com id=${id}`)),
-      catchError(this.handleError<Registro>('deleteRegistro'))
+      catchError(this.handleError<any>('deleteRegistro'))
     );
   }
+
+  // deleteRegistro (id): Observable<Registro> {
+  //   const url = `${this.baseUrl}${id}`;
+
+  //   return this.http.delete(url, httpOptions).pipe(
+  //     tap(_ => console.log(`remove o registro com id=${id}`)),
+  //     catchError(this.handleError<any>('deleteRegistro'))
+  //   );
+  // }
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
